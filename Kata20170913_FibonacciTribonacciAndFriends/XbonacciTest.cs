@@ -51,6 +51,18 @@ namespace Kata20170913_FibonacciTribonacciAndFriends
             XbonacciShouldBe(new double[] { 0, 1, 1, 1, 1, 4, 8 }, new double[] { 0, 1, 1, 1, 1 }, 7);
         }
 
+        [TestMethod]
+        public void input_0_0_0_0_1_and_10()
+        {
+            XbonacciShouldBe(new double[] { 0, 0, 0, 0, 1, 1, 2, 4, 8, 16 }, new double[] { 0, 0, 0, 0, 1 }, 10);
+        }
+
+        [TestMethod]
+        public void input_1_0_0_0_0_0_1_and_10()
+        {
+            XbonacciShouldBe(new double[] { 1, 0, 0, 0, 0, 0, 1, 2, 3, 6 }, new double[] { 1, 0, 0, 0, 0, 0, 1 }, 10);
+        }
+
         private static void XbonacciShouldBe(double[] expected, double[] signature, int n)
         {
             var xbonacci = new Xbonacci();
