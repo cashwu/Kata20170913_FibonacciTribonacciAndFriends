@@ -81,19 +81,18 @@ namespace Kata20170913_FibonacciTribonacciAndFriends
     {
         public double[] xbonacci(double[] signature, int n)
         {
-            var result = new List<double>();
+            var result = signature.ToList();
             for (var i = 0; i < n; i++)
             {
                 if (i + 1 <= signature.Length)
                 {
-                    result.Add(signature[i]);
                     continue;
                 }
 
                 result.Add(Enumerable.Range(1, signature.Length).Sum(j => result[i - j]));
             }
 
-            return result.ToArray();
+            return result.Take(n).ToArray();
         }
     }
 }
