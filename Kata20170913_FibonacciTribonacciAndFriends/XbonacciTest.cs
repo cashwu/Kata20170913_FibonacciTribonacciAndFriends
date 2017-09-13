@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Kata20170913_FibonacciTribonacciAndFriends
@@ -19,6 +21,12 @@ namespace Kata20170913_FibonacciTribonacciAndFriends
             XbonacciShouldBe(new double[] { 1, 1, 2 }, new double[] { 1, 1 }, 3);
         }
 
+        [TestMethod]
+        public void input_1_1_and_4_should_return_1_1_2_3()
+        {
+            XbonacciShouldBe(new double[] { 1, 1, 2, 3 }, new double[] { 1, 1 }, 4);
+        }
+
         private static void XbonacciShouldBe(double[] expected, double[] signature, int n)
         {
             var xbonacci = new Xbonacci();
@@ -31,7 +39,16 @@ namespace Kata20170913_FibonacciTribonacciAndFriends
     {
         public double[] xbonacci(double[] signature, int n)
         {
-            return new[] { signature[0], signature[1], signature[0] + signature[1] };
+            var result = signature.ToList();
+            for (int i = 0; i < n; i++)
+            {
+                if (i + 1 > result.Count)
+                {
+                    result.Add(result[i - 1] + result[i - 2]);
+                }
+            }
+
+            return result.ToArray();
         }
     }
 }
