@@ -63,6 +63,12 @@ namespace Kata20170913_FibonacciTribonacciAndFriends
             XbonacciShouldBe(new double[] { 1, 0, 0, 0, 0, 0, 1, 2, 3, 6 }, new double[] { 1, 0, 0, 0, 0, 0, 1 }, 10);
         }
 
+        [TestMethod]
+        public void input_1_2_3_4_5_6_7_8_9_0_and_9()
+        {
+            XbonacciShouldBe(new double[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }, new double[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 }, 9);
+        }
+
         private static void XbonacciShouldBe(double[] expected, double[] signature, int n)
         {
             var xbonacci = new Xbonacci();
@@ -75,11 +81,12 @@ namespace Kata20170913_FibonacciTribonacciAndFriends
     {
         public double[] xbonacci(double[] signature, int n)
         {
-            var result = signature.ToList();
+            var result = new List<double>();
             for (var i = 0; i < n; i++)
             {
-                if (i + 1 <= result.Count)
+                if (i + 1 <= signature.Length)
                 {
+                    result.Add(signature[i]);
                     continue;
                 }
 
