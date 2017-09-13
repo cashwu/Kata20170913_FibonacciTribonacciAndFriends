@@ -71,13 +71,7 @@ namespace Kata20170913_FibonacciTribonacciAndFriends
                     continue;
                 }
 
-                var val = 0d;
-                for (int j = 1; j <= signature.Length; j++)
-                {
-                    val += result[i - j];
-                }
-
-                result.Add(val);
+                result.Add(Enumerable.Range(1, signature.Length).Sum(j => result[i - j]));
             }
 
             return result.ToArray();
